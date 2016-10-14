@@ -12,6 +12,22 @@ namespace TodoApi.Test
     public class TodoRepositoryTests
     {
         [TestMethod]
+        public void GetAll()
+        {
+            ITodoRepository repository = new TodoRepository();
+            var len = repository.GetAll().ToArray().Length;
+            Assert.AreEqual(1, len);
+        }
+
+        [TestMethod]
+        public void Find()
+        {
+            ITodoRepository repository = new TodoRepository();
+            var item = repository.Find("1");
+            Assert.IsNotNull(item);
+        }
+
+        [TestMethod]
         public void Add()
         {
             ITodoRepository repository = new TodoRepository();
@@ -24,5 +40,7 @@ namespace TodoApi.Test
             var len = repository.GetAll().ToArray().Length;
             Assert.AreEqual(2, len);
         }
+
+        
     }
 }
